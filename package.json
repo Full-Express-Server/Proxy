@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "express": "^5.2.1",
+    "flaggedapi": "^3.3.0",
+    "http-proxy": "^1.18.1",
+    "tcp-port-used": "^1.0.2"
+  }
+}

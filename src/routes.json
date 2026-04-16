@@ -1,0 +1,13 @@
+{
+  "defaultTarget": null,
+  "domains": {
+    "localhost": {
+      "ip": "127.0.0.1",
+      "port": 82
+    },
+    "example.com": {
+      "ip": "127.0.0.1",
+      "port": 3000
+    }
+  }
+}
