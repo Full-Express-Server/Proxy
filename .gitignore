@@ -140,3 +140,6 @@ dist
 # Bun Lock
 bun.lockb
 bun.lock
+
+# Custom
+src
