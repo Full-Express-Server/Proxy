@@ -9,7 +9,7 @@ const bunPath = process.env.BUN_PATH || 'bun';
 console.clear(); //[TheFlagen430297] If you don't know what this is... I can't help you XD JK
 
 let packageManager
-function checkPackageManager(manager) { const result = spawnSync(manager, ['--version'], { stdio: 'ignore' }); return result.status === 0; }
+function checkPackageManager(manager) { const result = spawnSync(manager, ['--version'], { shell: true, stdio: 'ignore' }); return result.status === 0; }
 if (checkPackageManager(bunPath)) packageManager = `"${bunPath}" add`;
 else if (checkPackageManager('npm')) packageManager = 'npm install';
 else { console.log('No known package managers are installed, please install Bun or npm.'); process.exit(1); }
