@@ -154,7 +154,7 @@ function StartService() {
   });
   
   const server = http.createServer((req, res) => {
-    const hostname = /(?:[a-z0-9]*)\.((?:[a-z0-9]*)\.(?:.*))|((?:[a-z0-9]*)\.(?:.*))/gm.exec(getHostname(req))[1];
+    let hostname = /^(?:[a-zA-Z0-9-]+\.)+([a-zA-Z0-9-]+\.[a-zA-Z]{2,})$/gm; hostname = hostname.exec(getHostname(req))?.[1] ? hostname.exec(getHostname(req))[1] : getHostname(req);
     const target = getTarget(hostname);
     if (!target) { proxyLog(`No route found for domain: ${hostname}`); return send404(res, hostname); }
     proxy.web(req, res, { target });
