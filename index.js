@@ -78,6 +78,8 @@ function StartService() {
     const SCORE_COOLDOWN_TIME = 1000 * 60 * 10; // score lowers every 10 minutes
 
     app.use((req, res) => {
+
+
         if (req.path === "/status") {
             const uptime = process.uptime();
 
@@ -282,7 +284,7 @@ function StartService() {
             "Retry-After": retryAfter
         });
 
-        res.end(JSON.stringify({ status: 429, message: "Too many suspicious requests. Try again later." }, null, 2));
+        res.end(JSON.stringify({ status: 429, message: "Too many suspicious requests. Please contact the server administrator, or check out FES Proxy documentation." }, null, 2));
     }
 
     function getSecurityRecord(ip) {
@@ -366,7 +368,7 @@ function StartService() {
         if (!accept) addBotScore(ip, 2, "Missing Accept header");
         if (!host) addBotScore(ip, 4, "Missing Host header");
 
-        if (!["GET", "POST", "HEAD"].includes(method)) {
+        if (!["GET", "POST", "HEAD", "OPTIONS"].includes(method)) {
             addBotScore(ip, 3, `Suspicious method: ${method}`);
         }
 
